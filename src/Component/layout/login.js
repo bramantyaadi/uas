@@ -2,12 +2,15 @@ import React, { useEffect, useReducer } from 'react';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import useInput from '../../customhook/useInput';
 import axios from 'axios';
+import { Redirect } from 'react-router';
+import { NavLink , useHistory } from 'react-router-dom';
 // import {useDispatch} from 'react-redux';
 
 const Login = () => {
     const stateUsers = {
         data: []
     }
+    let history = useHistory();
 
     const reducer = (state, action) => {
         switch (action.type) {
@@ -44,11 +47,9 @@ const Login = () => {
         e.preventDefault();
         for(let [index , value] of state.data.entries()){
             if ( value.username.toLowerCase() == username.toLowerCase() && value.email.toLowerCase() == password.toLowerCase()) {
-                console.log("ada");
+                history.push("/home");
             }
         }
-        
-        // console.log({username,password});
         resetPassword();
         resetUsername();
     }

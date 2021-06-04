@@ -7,12 +7,16 @@ import {
   Link
 } from "react-router-dom";
 import Login from './Component/layout/login';
+import Home from './Component/layout/home';
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route exact path="/" component={Login} />
+      </Switch>
+      <Switch>
+        <Route path="/home" component={Home}/>
       </Switch>
     </Router>
   );
